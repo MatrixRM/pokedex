@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Detalhes - Pokémon{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<input type="hidden" class="pokemon-id" value="{{ pokemon_id }}">
+
+<div class="details-container">
+  <h2>Detalhes</h2>
+  <div class="details-basic"></div>
+  <div class="details-description"></div>
+  <div class="details-technical"></div>
+  <div class="details-location"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/details.js') }}"></script>
+{% endblock %}

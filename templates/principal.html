@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Regiões{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="regions-container">
+  <h1 class="title">Regiões</h1>
+  <div class="regions-grid"></div>
+</div>
+
+<div class="pokemons-container" style="display: none;">
+  <button class="btn-back" onclick="showRegions()">Voltar</button>
+  <h1 class="title">Região: {{ region_name | capitalize }}</h1>
+  <div class="pokemons-grid"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/regioes.js') }}"></script>
+{% endblock %}

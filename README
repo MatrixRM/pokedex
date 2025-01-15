@@ -1,0 +1,137 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1b51f035a13e7b3873cbbd4cbb84c423a3cb5a38
+# Pokédex Web Application
+
+Uma aplicação web interativa que permite aos usuários explorar regiões e Pokémons do universo Pokémon, com informações detalhadas obtidas da [PokéAPI](https://pokeapi.co/).
+
+## 🎯 Objetivo
+
+O objetivo deste projeto é oferecer uma experiência imersiva e educativa para os fãs de Pokémon, apresentando dados como tipos, habilidades, habitat e curiosidades de cada Pokémon, organizados por regiões.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Flask (Python)
+- **API**: PokéAPI
+- **Fontes**: Pokémon Solid e Pokémon Hollow
+
+---
+
+## 🚀 Funcionalidades
+
+### **Regiões**
+- Exibição das regiões Pokémon com imagens representativas.
+- Navegação por regiões para listar os Pokémons disponíveis.
+
+### **Pokémons**
+- Listagem de Pokémons por região.
+- Exibição de cards com:
+  - Nome
+  - ID
+  - Sprite oficial do Pokémon
+- Redirecionamento para uma página de detalhes de cada Pokémon.
+
+### **Detalhes do Pokémon**
+- Informações detalhadas como:
+  - Nome e ID
+  - Peso e altura
+  - Habilidades
+  - Tipo(s)
+  - Habitat e comportamento
+  - Curiosidades
+
+### **Outras Funcionalidades**
+- Design responsivo para uma experiência amigável em dispositivos móveis.
+- Mensagens de erro amigáveis quando algo dá errado.
+
+---
+
+## 📂 Estrutura do Projeto
+
+```plaintext
+.
+├── app.py              # Backend principal
+├── templates/          # Arquivos HTML para o frontend
+│   ├── base.html       # Template base com estrutura principal
+│   ├── index.html      # Página inicial
+│   ├── principal.html  # Página para exibir regiões e Pokémons
+│   ├── details.html    # Página de detalhes do Pokémon
+├── static/
+│   ├── css/            # Arquivos de estilo
+│   │   ├── base.css
+│   │   ├── pokedex.css
+│   │   ├── regions.css
+│   │   ├── nav.css
+│   ├── js/             # Arquivos JavaScript
+│   │   ├── script.js
+│   │   ├── regioes.js
+│   ├── img/            # Imagens (ex.: ícones de regiões)
+│   ├── fonts/          # Fontes personalizadas
+├── README.md           # Documentação do projeto
+```
+
+---
+
+## 🖥️ Como Executar o Projeto
+
+### **Pré-requisitos**
+- Python 3.x instalado
+- Ambiente virtual configurado
+
+### **Instalação**
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/sua-pokedex.git
+   cd sua-pokedex
+   ```
+
+2. Crie e ative um ambiente virtual:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # No Windows: venv\Scripts\activate
+   ```
+
+3. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Execute o aplicativo:
+   ```bash
+   flask run
+   ```
+
+5. Acesse o projeto em [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+---
+
+## 🎨 Melhorias Futuras
+
+- Implementar um sistema de busca por Pokémon.
+- Adicionar suporte a evoluções e pré-evoluções.
+- Mostrar localizações detalhadas para captura no jogo.
+- Traduzir todas as informações para Português diretamente.
+
+---
+
+## 🧑‍💻 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias ou correções.
+
+---
+
+## 📜 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---
+
+## 💡 Créditos
+
+- **PokéAPI**: Fonte dos dados utilizados.
+- **Fontes Pokémon**: Pokémon Solid e Pokémon Hollow.
+- **Desenvolvido por**: Roberto Mânica.

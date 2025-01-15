@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Links -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+
+  <title>{% block title %}Pokédex{% endblock %}</title>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">Pokédex</a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li><a href="/pokedex">Pokédex</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <header>
+    {% block header %}
+    <h1 class="pokemon-title">Pokédex</h1>
+    {% endblock %}
+  </header>
+  
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>Desenvolvido por Roberto Mânica</p>
+  </footer>
+
+  <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
