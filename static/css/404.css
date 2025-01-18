@@ -1,0 +1,47 @@
+/* Estilo específico para a página 404 */
+.error-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.error-title {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 2px 2px #333;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.error-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.error-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0074d9;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.error-button:hover {
+  background-color: #0056a3;
+}

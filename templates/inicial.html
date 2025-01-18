@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pesquisa.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div class="filters-container">
+
+    <form id="search-form" class="search-form">
+
+        <input 
+            type="text" 
+            id="search-bar" 
+            name="query" 
+            placeholder="Procurar por nome ou número..." 
+            class="search-bar"
+            aria-label="Digite o nome ou número do Pokémon"
+        />
+        
+
+        <select id="region-filter" name="region" class="filter-select">
+            <option value="all">Todas as Regiões</option>
+            <option value="kanto">Kanto</option>
+            <option value="johto">Johto</option>
+            <option value="hoenn">Hoenn</option>
+            <option value="sinnoh">Sinnoh</option>
+            <option value="unova">Unova</option>
+            <option value="kalos">Kalos</option>
+            <option value="alola">Alola</option>
+            <option value="galar">Galar</option>
+        </select>
+        
+
+        <select id="type-filter" name="type" class="filter-select">
+            <option value="all">Todos os Tipos</option>
+            <option value="normal">Normal</option>
+            <option value="fire">Fogo</option>
+            <option value="water">Água</option>
+            <option value="electric">Elétrico</option>
+            <option value="grass">Grama</option>
+            <option value="ice">Gelo</option>
+            <option value="fighting">Lutador</option>
+            <option value="poison">Veneno</option>
+            <option value="ground">Terra</option>
+            <option value="flying">Voador</option>
+            <option value="psychic">Psíquico</option>
+            <option value="bug">Inseto</option>
+            <option value="rock">Pedra</option>
+            <option value="ghost">Fantasma</option>
+            <option value="dragon">Dragão</option>
+            <option value="dark">Sombrio</option>
+            <option value="steel">Aço</option>
+            <option value="fairy">Fada</option>
+        </select>
+        
+        <button type="submit" class="search-button">Pesquisar</button>
+    </form>
+</div>
+
+<div class="pokemons-container">
+    <div class="pokemons-grid" aria-live="polite" aria-atomic="true"></div>
+    <div class="pagination"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/pesquisa.js') }}"></script>
+{% endblock %}

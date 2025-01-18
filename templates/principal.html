@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pesquisa.css') }}">
+{% endblock %}
+
+
 {% block title %}Regiões{% endblock %}
 
 {% block header %}{% endblock %}
+
+
 
 {% block content %}
 <div class="regions-container">

@@ -1,12 +1,15 @@
 from flask import Flask, render_template, jsonify, request
 import requests
+from flask_caching import Cache
 
 app = Flask(__name__)
+cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache', 'CACHE_DEFAULT_TIMEOUT': 300})
+
 
 @app.route('/')
 def index():
     """Renderiza a página inicial."""
-    return render_template('principal.html')
+    return render_template('inicial.html')
 
 
 @app.route('/pokemon', methods=['GET'])
@@ -47,9 +50,9 @@ def get_pokemons_by_region(region_name):
         "johto": "original-johto",
         "hoenn": "hoenn",
         "sinnoh": "original-sinnoh",
-        "unova": "unova",
+        "unova": "21",
         "kalos": "kalos-central",  # Exemplo para região central de Kalos
-        "alola": "alola",
+        "alola": "23",
         "galar": "galar",
         "hisui": "hisui",
         "paldea": "paldea"
@@ -148,6 +151,78 @@ def get_pokemon_details():
         return jsonify(details)
     else:
         return jsonify({'error': 'Pokémon não encontrado'}), 404
+    
+
+
+# Carregar todos os Pokémon no cache
+@cache.cached(timeout=3600)
+def load_all_pokemons():
+    pokemons = []
+    response = requests.get('https://pokeapi.co/api/v2/pokemon?limit=1025')
+    if response.status_code == 200:
+        data = response.json()
+        for index, pokemon in enumerate(data['results']):
+            pokemons.append({
+                'id': index + 1,
+                'name': pokemon['name'].capitalize(),
+                'sprite': f'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{index + 1}.png',
+            })
+    return pokemons
+
+# Endpoint de busca e filtro
+@app.route('/search', methods=['GET'])
+def search_pokemon():
+    query = request.args.get('query', '').lower()
+    region = request.args.get('region', '').lower()
+    poke_type = request.args.get('type', '').lower()
+    page = int(request.args.get('page', 1))
+    per_page = 20
+    start = (page - 1) * per_page
+    end = start + per_page
+
+    try:
+        # Carregar todos os Pokémon do cache
+        all_pokemons = load_all_pokemons()
+
+        # Filtrar por nome ou ID
+        if query:
+            all_pokemons = [
+                p for p in all_pokemons
+                if query in p['name'].lower() or query == str(p['id'])
+            ]
+
+        # Filtrar por tipo
+        if poke_type:
+            type_response = requests.get(f'https://pokeapi.co/api/v2/type/{poke_type}')
+            if type_response.status_code == 200:
+                type_data = type_response.json()
+                valid_ids = {int(p['pokemon']['url'].split('/')[-2]) for p in type_data['pokemon']}
+                all_pokemons = [p for p in all_pokemons if p['id'] in valid_ids]
+
+        # Filtrar por região (opcional)
+        if region:
+            region_response = requests.get(f'https://pokeapi.co/api/v2/pokedex/{region}')
+            if region_response.status_code == 200:
+                region_data = region_response.json()
+                valid_ids = {entry['entry_number'] for entry in region_data['pokemon_entries']}
+                all_pokemons = [p for p in all_pokemons if p['id'] in valid_ids]
+
+        # Paginação
+        paginated_results = all_pokemons[start:end]
+
+        return jsonify({'results': paginated_results, 'total': len(all_pokemons)})
+
+    except Exception as e:
+        print(f"Erro no servidor: {e}")
+        return jsonify({'error': 'Erro interno no servidor'}), 500
+
+
+
+
+
+
+
+
 
 
 @app.route('/pokemon/details/<int:pokemon_id>')
@@ -165,6 +240,10 @@ def principal():
 def region_pokemons(region_name):
     return render_template('principal.html', region_name=region_name)
 
+@app.errorhandler(404)
+def page_not_found(error):
+    """Renderiza a página de erro 404."""
+    return render_template('error404.html'), 404
 
 
 if __name__ == '__main__':

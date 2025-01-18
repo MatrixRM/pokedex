@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+{% endblock %}
 
 
 {% block title %}Detalhes - Pokémon{% endblock %}
@@ -9,12 +12,76 @@
 {% block content %}
 <input type="hidden" class="pokemon-id" value="{{ pokemon_id }}">
 
-<div class="details-container">
-  <h2>Detalhes</h2>
-  <div class="details-basic"></div>
-  <div class="details-description"></div>
-  <div class="details-technical"></div>
-  <div class="details-location"></div>
+<div class="details-page">
+  <!-- Header com Nome e ID do Pokémon -->
+  <div class="details-header">
+    <h1 id="pokemon-name">Nome do Pokémon</h1>
+    <p id="pokemon-id">Nº 000</p>
+  </div>
+
+  <!-- Imagem e Descrição -->
+  <div class="details-main">
+    <div class="pokemon-image-section">
+      <img id="pokemon-image" src="#" alt="Imagem do Pokémon" />
+    </div>
+    <div class="pokemon-description">
+      <p id="pokemon-description">Descrição do Pokémon...</p>
+      <div class="pokemon-versions">
+        <span>Versions:</span>
+        <img src="/static/img/icons/red-blue.png" alt="Version Icon">
+        <img src="/static/img/icons/gold-silver.png" alt="Version Icon">
+      </div>
+    </div>
+  </div>
+
+  <!-- Informações Básicas -->
+  <div class="pokemon-info">
+    <div class="info-box">
+      <h3>Altura</h3>
+      <p id="pokemon-height">0.0 m</p>
+    </div>
+    <div class="info-box">
+      <h3>Peso</h3>
+      <p id="pokemon-weight">0.0 kg</p>
+    </div>
+    <div class="info-box">
+      <h3>Categoria</h3>
+      <p id="pokemon-category">Categoria</p>
+    </div>
+    <div class="info-box">
+      <h3>Habilidades</h3>
+      <p id="pokemon-abilities">Habilidade 1, Habilidade 2</p>
+    </div>
+    <div class="info-box">
+      <h3>Gênero</h3>
+      <p id="pokemon-gender">♂ / ♀</p>
+    </div>
+  </div>
+
+  <!-- Tipo e Fraquezas -->
+  <div class="pokemon-types">
+    <div>
+      <h3>Tipo</h3>
+      <p id="pokemon-types">Tipo 1, Tipo 2</p>
+    </div>
+    <div>
+      <h3>Fraquezas</h3>
+      <p id="pokemon-weaknesses">Fraqueza 1, Fraqueza 2</p>
+    </div>
+  </div>
+
+  <!-- Estatísticas -->
+  <div class="pokemon-stats">
+    <h3>Estatísticas</h3>
+    <div class="stats-grid">
+      <div class="stat-bar" id="stat-hp"><span>HP</span><div class="bar"></div></div>
+      <div class="stat-bar" id="stat-attack"><span>Ataque</span><div class="bar"></div></div>
+      <div class="stat-bar" id="stat-defense"><span>Defesa</span><div class="bar"></div></div>
+      <div class="stat-bar" id="stat-special-attack"><span>Ataque Especial</span><div class="bar"></div></div>
+      <div class="stat-bar" id="stat-special-defense"><span>Defesa Especial</span><div class="bar"></div></div>
+      <div class="stat-bar" id="stat-speed"><span>Velocidade</span><div class="bar"></div></div>
+    </div>
+  </div>
 </div>
 
 <script src="{{ url_for('static', filename='js/details.js') }}"></script>

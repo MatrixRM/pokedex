@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">
+{% block title %}Erro 404 - Página Não Encontrada{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <h1 class="error-title">404</h1>
+    <p class="error-message">Oops! Parece que você se perdeu no mundo Pokémon.</p>
+    <img class="error-image" src="{{ url_for('static', filename='img/pikachu-404.png') }}" alt="Pikachu Perdido">
+    <a class="error-button" href="{{ url_for('index') }}">Voltar para a Página Inicial</a>
+</div>
+{% endblock %}

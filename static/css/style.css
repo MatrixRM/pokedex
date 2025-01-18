@@ -203,14 +203,107 @@ main {
   font-size: 0.9rem;
 }
 
-.details-container {
-  border: 1px solid #ccc;
-  padding: 1em;
-  margin-top: 1em;
+.details-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
 }
-.details-container h2 {
-  margin-bottom: 0.5em;
+
+.details-header h1 {
+  font-size: 2.5rem;
+  color: #444;
 }
+
+.details-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.pokemon-image-section img {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+}
+
+.pokemon-description {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.pokemon-versions img {
+  width: 30px;
+  margin: 0 5px;
+}
+
+.pokemon-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.info-box h3 {
+  font-size: 1.2rem;
+  color: #0072dd;
+}
+
+.info-box p {
+  font-size: 1rem;
+  color: #444;
+}
+
+.pokemon-types {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.pokemon-types h3 {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.pokemon-types p {
+  font-size: 1rem;
+  color: #0072dd;
+}
+
+.pokemon-stats {
+  margin: 30px 0;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.stat-bar .bar {
+  width: 100px;
+  height: 10px;
+  background-color: #ddd;
+  margin-top: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stat-bar .bar::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  background-color: #0072dd;
+  border-radius: 5px;
+}
+
 
 
 @font-face {
@@ -325,4 +418,43 @@ border: 2px solid #006ba8;
   font-size: 1em;
   color: #ff0000;
   font-weight: bold;
+}
+
+
+
+
+
+
+
+.filters-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+
+#search-bar,
+#region-filter,
+#type-filter {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
 }

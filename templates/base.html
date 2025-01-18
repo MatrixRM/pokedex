@@ -6,7 +6,10 @@
 
   <!-- Links -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+  {% block extra_css %}{% endblock %}
+  
+
+
 
   <title>{% block title %}Pokédex{% endblock %}</title>
 </head>
@@ -18,6 +21,7 @@
       <ul class="nav-links">
         <li><a href="/">Início</a></li>
         <li><a href="/pokedex">Pokédex</a></li>
+        <li><a href="/regions/<string:region_name>">Regiões</a></li>
       </ul>
     </div>
   </nav>
